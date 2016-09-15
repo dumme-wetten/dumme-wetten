@@ -1,0 +1,10 @@
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'test/test_helper.rb'
+
+Metrics/LineLength:
+  Exclude:
+    - 'bin/spring'
