@@ -1,16 +1,11 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe UsersController do
-  describe "POST create" do
-    it "assigns @teams" do
-      team = Team.create
-      get :post
-      expect(assigns(:teams)).to eq([team])
-    end
-
-    it "renders the index template" do
-      get :post
-      expect(response).to render_template("index")
+  describe 'POST create' do
+    it 'creates post' do
+      user = { email: 'test@example.com', name: 'test' }
+      expect { post :create, user: user }.to change { User.count }.from(0).to(1)
     end
   end
 end
