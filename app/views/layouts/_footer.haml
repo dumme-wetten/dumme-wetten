@@ -1,0 +1,12 @@
+%footer.footer
+  .container
+    %p.text-center.text-muted
+      %span.fa.fa-copyright
+      dumme-wetten.de -
+      = Date.today.year
+    %p.text-center.text-muted
+      = link_to 'Datenschutz', data_protection_pages_path
+      |
+      = link_to 'Impressum', impressum_pages_path
+      |
+      = link_to 'Geschäftsbedienungen', privacy_pages_path
