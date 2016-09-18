@@ -1,0 +1,64 @@
+.panel.panel-default
+  .panel-heading
+    Neue Freundschaft hinzufügen
+  .panel-body
+    = form_for @friendship, html: { class: 'form-inline' } do |f|
+      .form-group
+        = f.label :friend_id
+        = f.text_field :friend_id, class: 'form-control'
+      .form-group
+        = f.submit :save, class: 'btn btn-default'
+
+%div
+  / Nav tabs
+  %ul.nav.nav-tabs{:role => "tablist"}
+    %li.active{:role => "presentation"}
+      %a{"aria-controls" => "accepted_friendships", "data-toggle" => "tab", :href => "#accepted_friendships", :role => "tab"} Freunde
+    %li{:role => "presentation"}
+      %a{"aria-controls" => "open_friendships", "data-toggle" => "tab", :href => "#open_friendships", :role => "tab"} Offene Anfragen
+    %li{:role => "presentation"}
+      %a{"aria-controls" => "unresponse_friendships", "data-toggle" => "tab", :href => "#unresponse_friendships", :role => "tab"} Unbeantwortet Anfragen
+  / Tab panes
+  .tab-content
+    #accepted_friendships.tab-pane.active{:role => "tabpanel"}
+      %table
+        %tr
+          %th
+            email
+          %th
+            created_at
+        - @accepted_friendships.each do |friendship|
+          %tr
+            %td
+              = friendship.friend.email
+            %td
+              = friendship.created_at
+
+
+    #open_friendships.tab-pane{:role => "tabpanel"}
+      %table
+        %tr
+          %th
+            email
+          %th
+            created_at
+        - @open_friendships.each do |friendship|
+          %tr
+            %td
+              = friendship.friend.email
+            %td
+              = friendship.created_at
+
+    #unresponse_friendships.tab-pane{:role => "tabpanel"}
+      %table
+        %tr
+          %th
+            email
+          %th
+            created_at
+        - @unresponse_friendships.each do |friendship|
+          %tr
+            %td
+              = friendship.friend.email
+            %td
+              = friendship.created_at
